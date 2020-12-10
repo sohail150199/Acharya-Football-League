@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="<%= titleimage %>" type="image/x-icon">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>
+        <%= title %>
+    </title>
+    <style>
+        @media screen and (max-width:556px) {
+            .disp {
+                display: none;
+            }
+
+            h1.title {
+                text-align: center;
+            }
+        }
+
+        .pad {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1 class="title">
+                <a href="/">
+                    <b>
+                      <i style="color:#F49424">Acharya</i>
+                      <i style="color:#223881">Football</i>
+                      <i style="color:#F49424">League.</i>
+                    </b>
+                  </a>
+                <img class="disp" style="float:right" src="<%= titleimage %>" alt="Acharya Logo "
+                    width="90" height="80">
+            </h1>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#">Live</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/detail">Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/register">Registration</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class=" tab-pane active"><br>
+                <h3 class="text-center"><u><b>Live Scores</b></u></h3>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <div>
+                            <img src="<%= image %>" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div>
+                            <img src="<%= image1 %>" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <table style="border-collapse:collapse;width:100%;border: 1px solid #ddd;text-align:center">
+                            <tr>
+                                <th class="pad">Chelsea</th>
+                                <th class="pad">Europe</th>
+                            </tr>
+                            <tr>
+                                <td class="pad">
+                                    <p id="goal1">1</p>
+                                </td>
+                                <td class="pad">
+                                    <p id="goal2">3</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+            <script>
+                  var socket = io();
+                  socket.on('team1Goal', function(team1Goal){
+                    document.getElementById('goal1').innerHTML = team1Goal;
+                  });
+                  socket.on('team2Goal', function(team2Goal){
+                    document.getElementById('goal2').innerHTML = team2Goal;
+                  });
+              </script>
+</body>
+
+</html>

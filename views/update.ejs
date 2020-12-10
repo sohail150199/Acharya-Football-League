@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <form>
+            <h2 class="text-center"><%= heading %></h2>
+
+            <div class="form-data">
+              <label for="teamOneGoal">Team 1 : </label>
+              <input
+                class="form-control"
+                type="number"
+                name="teamOneGoal"
+                id="team1"
+                placeholder="Enter team one goal"
+              />
+            </div>
+            <div class="form-data">
+              <label for="playerusn">Team 1 Players : </label>
+              <select class="form-control" name="usn" id="playerusn" >
+                <option value="1ay16is085">Rahul</option>
+                <option value="1ay16is100">Shyam</option>
+                <option value="1ay16is079">Jayesh</option>
+                <option value="1ay15is125">Pavan</option>
+              </select>
+            </div>
+            <br />
+            <div class="form-data">
+              <label for="teamTwoGoal">Team 2 : </label>
+              <input
+                class="form-control"
+                type="number"
+                name="teamTwoGoal"
+                id="team2"
+                placeholder="Enter team one goal"
+              />
+            </div>
+            <br />
+            <div class="text-center">
+              <button
+                class="btn btn-primary"
+                onclick="insertData()"
+                type="button"
+              >
+                submit
+              </button>
+            </div>
+          </form>
+          <br />
+          <div class="text-center">
+            <p>OR</p>
+            <h2>Update Schedule</h2>
+            <a href="/schedule/update"
+              ><button type="submit" class="btn btn-danger">
+                Click here to update Schedule
+              </button></a
+            >
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      function insertData() {
+        var socket = io();
+        if ($("#team1").val()) {
+          socket.emit("team1Goal", $("#team1").val());
+          socket.emit("team1player", $("#playerusn").val());
+        }
+        if ($("#team2").val()) {
+          socket.emit("team2Goal", $("#team2").val());
+        }
+        axios
+          .post("/update/insert", {
+            goal1: document.getElementById("team1").value,
+            goal2 : document.getElementById("team2").value,
+            player_usn : document.getElementById("playerusn").value 
+          })
+          .then(function(response) {
+            console.log(response);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }
+    </script>
+  </body>
+</html>

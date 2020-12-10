@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="shortcut icon" href="<%= image %>" type="image/x-icon" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <h1 class="title">
+        <a href="/">
+          <b>
+            <i style="color:#F49424">Acharya</i>
+            <i style="color:#223881">Football</i>
+            <i style="color:#F49424">League.</i>
+          </b>
+        </a>
+        <img class="disp" style="float:right" src="http://www.acharya.ac.in/img/Acharya_Logo1.PNG" alt="Acharya Logo "
+          width="90" height="80" />
+      </h1>
+      <br />
+      <hr />
+    </div>
+    <div>
+      <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/">Live</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/schedule">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/detail">Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/register">Registration</a>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="row">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Players</a></li>
+        <li><a href="/detail/coach">Coaches</a></li>
+        <li><a href="/detail/manOfTheMatch">Man Of The Match</a></li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <form action="/detail/players" method="GET">
+          <div class="form-group">
+            <select class="form-control" name="teams" id="teams" onchange="getPlayerDetails()">
+              <option value="12">Chelsea</option>
+              <option value="13">Barcelona</option>
+              <option value="14">AFC</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">USN</th>
+          <th scope="col">Age</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+        </tr>
+      </thead><br>
+      <tr id="team">
+
+      </tr>
+      <!-- <% for(var i=0; i < players.length; i++) { %>
+      <tr>
+        <td><%= players[i].name %></td>
+        <td><%= players[i].usn %></td>
+        <td><%= players[i].age %></td>
+        <td><%= players[i].email %></td>
+        <td><%= players[i].contact %></td>
+        <td><%= players[i].team %></td>
+      </tr>
+      <% } %> -->
+    </table>
+</body>
+<script>
+  function getPlayerDetails() {
+    var x = document.getElementById('teams').value;
+    var res = axios.get('http://localhost:3000/detail/getTeamPlayers?teamId=' + x);
+    res.then(function (response) {
+        for (let i = 0; i < response.data.length; i++) {
+          document.getElementById("team").innerHTML = (
+            "<tr><td>" + response.data[i].name + "</td>" +
+            "<td>" + response.data[i].usn + "</td>" +
+            "<td>" + response.data[i].age + "</td>" +
+            "<td>" + response.data[i].email + "</td>" +
+            "<td>" + response.data[i].contact + "</td>"
+          )
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+</script>
+
+</html>

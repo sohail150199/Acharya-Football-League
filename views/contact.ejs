@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="http://www.acharya.ac.in/img/Acharya_Logo1.PNG" type="image/x-icon">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>
+        <%= title %>
+    </title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1 class="title">
+                <a href="/">
+                    <b>
+                      <i style="color:#F49424">Acharya</i>
+                      <i style="color:#223881">Football</i>
+                      <i style="color:#F49424">League.</i>
+                    </b>
+                  </a>
+                <img class="disp" style="float:right" src="http://www.acharya.ac.in/img/Acharya_Logo1.PNG" alt="Acharya Logo "
+                    width="90" height="80">
+            </h1>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/">Live</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/schedule">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/detail">Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/register">Registration</a>
+                </li>
+            </ul>
+        </div>
+        <h2>
+            <b>
+                <%= title %>
+            </b>
+        </h2>
+        <p style="font-size:20px;font-family: fantasy">Your feedback matters. Write to us if you have any
+            questions, queries or suggestions regarding any page/content published on <b>Alfacharya.cf</b></p>
+        <div class="row">
+            <div class="col-md-6">
+                <form role="form" method="POST" action="contact/send">
+                    <p style="color:darkgreen">
+                        <%= msg %>
+                    </p>
+                    <br style="clear:both">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="messages" class="form-control" type="textarea" id="message" placeholder="Enter YourMessage" maxlength="140"
+                            rows="7"></textarea>
+                        <span class="help-block">
+                        </span>
+                    </div>
+
+                    <div class="g-recaptcha" data-sitekey="6LdsO3YUAAAAANo0W3k9U85MTXQaHju6Civysy4J"></div><br>
+                    <div>
+                        <button type="submit" id="submit" name="submit" class="btn btn-primary pull-left">Submit
+                            Form</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Office Contact Details</h2>
+                <div>
+                    <p>
+                        #7,5th Cross Acharya Institutes,<br> Dr Sarvepalli Radhakrishnan Road,<br>
+                        Soladevanahalli, Bangalore. <br> Karnataka - 560107.
+                    </p>
+                    <p>Phone : <b>+917778885111</b></p>
+                    <p>
+                        <iframe style="border:1.5px solid lightgray;border-radius:5px;padding:3px" src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d1944.2200299269982!2d77.48425565764995!3d13.085705790326072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d13.0825126!2d77.4844145!4m5!1s0x3bae236e37165bc5%3A0x775c53e4d8c418b9!2sAcharya+Institutes%2C+Acharya+Doctor+Sarvepalli+Radhakrishnan+Road%2C+Bengaluru%2C+Karnataka+560107%2C+India!3m2!1d13.0850221!2d77.484381!5e0!3m2!1sen!2sin!4v1538847653902"
+                            width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </p>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

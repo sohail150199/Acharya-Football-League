@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="shortcut icon" href="<%= image %>" type="image/x-icon" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <h1 class="title">
+        <a href="/">
+          <b>
+            <i style="color:#F49424">Acharya</i>
+            <i style="color:#223881">Football</i>
+            <i style="color:#F49424">League.</i>
+          </b>
+        </a>
+        <img class="disp" style="float:right" src="http://www.acharya.ac.in/img/Acharya_Logo1.PNG" alt="Acharya Logo "
+          width="90" height="80" />
+      </h1>
+      <br />
+      <hr />
+    </div>
+    <div>
+      <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/">Live</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/schedule">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#">Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="/register">Registration</a>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="row">
+      <ul class="nav navbar-nav">
+        <li><a href="/detail/players">Players</a></li>
+        <li><a href="/detail/coach">Coaches</a></li>
+        <li><a href="/detail/manOfTheMatch">Man Of The Match</a></li>
+      </ul>
+    </div>
+    <div class="text-center">
+      <h2>
+        <%= msg %>
+      </h2>
+    </div>
+</body>
+
+</html>
